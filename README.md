@@ -97,20 +97,7 @@ Evaluate trained models via:
 python exps/eval.py --path ./output/
 ```
 
----
 
-## 🧩 Core Components
-
-* **DAG-aware VAE**
-  Combines latent-variable modeling with explicit DAG constraints to encourage causal structure discovery.
-
-* **Perturbation-aware Encoding**
-  Supports gene and chemical perturbations through learned embeddings.
-
-* **Flexible Evaluation Pipeline**
-  Designed to integrate with standard single-cell perturbation benchmarks.
-
----
 
 ## 📄 About This Release
 
