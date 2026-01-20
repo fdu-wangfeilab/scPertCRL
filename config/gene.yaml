@@ -1,0 +1,69 @@
+use_gpu: true
+output_path: /home/dongjiaying/workbench/pert/scPertCRL/output/
+seed: 0
+
+data:
+  dataset: replogle_rpe1_essential 
+  data_root: /home/dongjiaying/workbench/pert/scPertCRL/data/
+  batch_size: 8 
+  hvg: 2000
+  network_path: /home/dongjiaying/workbench/pert/project/data/datasets/network/
+  desc_path: /home/dongjiaying/workbench/pert/project/data/outputs/rpe1_input.json
+  graph_path: None 
+  downsample: -1
+  set_flag: 50
+  split: simulation
+  
+model:
+  aux_dim: 512
+  hidden_dim: 64
+  latent_dim: null 
+  var_dim: 1
+  depth: 2
+  dropout_rate: 0.3
+  k_neumann: 3
+  emb_flag: true
+  ablation_setting: all 
+  noise_scale: 0.1
+  net_type: cond
+  loss_type: combined4
+  loss_type_weight: [0.1, 1, 0, 1]
+  scale: false
+  rank: 48
+  nonlinear_flag: false
+
+  # gene embeddings
+  n_nmf_embedding: 128
+  pca_dim: null
+  pathway_files: /home/dongjiaying/workbench/pert/PRESAGE/sample_files/prior_files/sample.knowledge_experimental.txt
+  embedding_files: null
+  item_hidden_size: 512
+  node2vec_walk_length: 100
+  node2vec_context_size: 5
+  node2vec_walks_per_node: 3
+  node2vec_num_negative_samples: 3
+  node2vec_p: 1.0
+  node2vec_q: 2.0
+  node2vec_batchsize: 32
+  dim_red_alg: Node2Vec
+  n_neigh_prune: 5
+  source: temp
+  learnable_gene_embedding: false
+  softmax_temperature: 0.15
+  pathway_item_hidden_size: 128
+  pathway_item_nlayers: 2
+  batch_norm: true
+  
+train:
+  learning_rate: 0.001
+  weight_decay: 0.00001
+  num_pre_epochs: 30 
+  num_epochs: 50 
+  patience: 10 
+  loss_weight: [1, 0.5, 0.001, 0.1, 0.1]
+  force_set_one: false
+
+exp:
+  viz_flag: true
+  save_data_flag: true
+

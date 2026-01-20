@@ -1,0 +1,47 @@
+use_gpu: true
+output_path: /home/dongjiaying/workbench/pert/data/exps/scPertCRL/
+ 
+data:
+  dataset: pbmc 
+  data_root: /mnt/nfs_239/sdc/dongjiayi/pert/gears_data/
+  batch_size: 8 
+  hvg: 2000
+  network_path: /home/dongjiaying/workbench/pert/project/data/datasets/network/
+  desc_path: null
+  graph_path: null
+  downsample: -1
+  set_flag: 50
+  split: simulation
+  test_cell_type: T cells CD8+
+
+
+model:
+  aux_dim: 512
+  hidden_dim: 64
+  latent_dim: null
+  var_dim: 1
+  depth: 2
+  dropout_rate: 0.3
+  k_neumann: 3
+  emb_flag: true
+  ablation_setting: all
+  noise_scale: 0.1
+  net_type: cond
+  loss_type: combined4
+  loss_type_weight: [0.1, 1, 0, 1000] 
+  rank: 48
+  nonlinear_flag: false
+
+train:
+  learning_rate: 0.001 
+  weight_decay: 0.00001
+  num_pre_epochs: 30 
+  num_epochs: 20
+  patience: 10 
+  loss_weight: [1, 1, 1, 0.01, 0.1]
+  force_set_one: false
+
+exp:
+  viz_flag: true
+  save_data_flag: true
+  retrain_flag: true
